@@ -8,37 +8,25 @@ export default createStore({
     todoItem: "",
     isDone: false,
   },
-  mutations: {
-    // addNewItem(state) {
-    //   state.todos.push({
-    //     id: Math.floor(Math.random()),
-    //     title: state.todoItem,
-    //     done: state.isDone,
-    //   });
-    //   state.todoItem = "";
-    // },
-
-    resetItem(state) {
-      state.todoItem = "";
+  actions: {
+    addNewItem({ commit }, { todoItem }) {
+      commit("ADD_NEW_ITEM", todoItem);
     },
-
-    addNewItem(state, todoItem) {
+    deleteItem({ commit }, id) {
+      commit("DELETE_ITEM", id);
+    },
+  },
+  mutations: {
+    ADD_NEW_ITEM(state, todoItem) {
       state.todos.push(todoItem);
       localStorage.setItem("todos", JSON.stringify(state.todos));
       state.todoItem = "";
     },
 
-    deleteItem(state, todoItem) {
-      state.todos = state.todos.filter((val) => val.id !== todoItem.id);
+    DELETE_ITEM(state, todoItem, id) {
+      let index = state.todos.findIndex((todo) => (todo.id = id));
+      state.todos.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(state.todos));
-    },
-  },
-  actions: {
-    addNewItem({ commit }, { todoItem }) {
-      commit("addNewItem", todoItem);
-    },
-    deleteItem({ commit }, { todoItem }) {
-      commit("deleteItem", todoItem);
     },
   },
   getters: {

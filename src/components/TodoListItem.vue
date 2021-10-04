@@ -1,12 +1,11 @@
 <template>
   <div
-    v-for="(todo, index) in todos"
+    v-for="todo in todos"
     :key="todo.id"
     class="flex items-center border border-gray-200 rounded-l mb-3"
   >
     <div class="p-2">
       <h4 class="text-xl">{{ todo.title }}</h4>
-      <!-- <p class="text-base text-gray-500 font-normal">{{ item.description }}</p> -->
     </div>
     <div class="flex items-center ml-auto pr-3">
       <input
@@ -20,12 +19,14 @@
       </label>
     </div>
     <div class="px-2">
-      <button @click="deleteItem(index)">Delete</button>
+      <button @click="deleteItemMethod()">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "TodoListItem",
 
@@ -37,6 +38,13 @@ export default {
     return {
       todoItem: "",
     };
+  },
+
+  methods: {
+    ...mapActions(["deleteItem"]),
+    deleteItemMethod() {
+      this.deleteItem();
+    },
   },
 };
 </script>

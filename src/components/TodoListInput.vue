@@ -51,7 +51,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["addNewItem"]),
+    ...mapActions(["addNewItem", "resetItem"]),
 
     addNewItemMethod() {
       const todoItem = {
@@ -61,11 +61,11 @@ export default {
       };
 
       this.addNewItem({ todoItem });
-      this.activity = "";
+      this.todoItem = "";
     },
 
     resetItem() {
-      this.$store.commit("resetItem");
+      this.todoItem = "";
     },
   },
 
