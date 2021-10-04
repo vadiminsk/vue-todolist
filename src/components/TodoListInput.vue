@@ -13,16 +13,19 @@
     </div>
     <button
       @click="addNewItem"
-      class="inline-flex items-center px-4 py-2 mr-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
     >
       Add new
     </button>
-    <button
-      @click="resetItem"
-      class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    >
-      Reset
-    </button>
+    <transition name="fade">
+      <button
+        @click="resetItem"
+        v-show="showResetButton"
+        class="inline-flex items-center px-4 py-2 ml-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Reset
+      </button>
+    </transition>
   </form>
   <div>
     <TodoListItem :todos="todos" />
@@ -57,6 +60,12 @@ export default {
 
     resetItem() {
       this.todoItem = "";
+    },
+  },
+
+  computed: {
+    showResetButton() {
+      return this.todoItem.length > 0;
     },
   },
 };
