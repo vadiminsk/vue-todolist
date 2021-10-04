@@ -18,6 +18,12 @@ export default {
     TodoListButton,
     TodoListItem,
   },
+
+  methods: {
+    incrementCount() {
+      this.$store.commit("increment");
+    },
+  },
 };
 </script>
 

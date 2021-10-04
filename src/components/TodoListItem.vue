@@ -32,6 +32,12 @@ export default {
   props: {
     todos: Array,
   },
+
+  data() {
+    return {
+      todoItem: "",
+    };
+  },
 };
 </script>
 
