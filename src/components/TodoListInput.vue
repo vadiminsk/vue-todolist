@@ -51,9 +51,13 @@ export default {
   },
 
   methods: {
-    ...mapActions(["addNewItem", "resetItem"]),
+    ...mapActions(["addNewItem"]),
 
     addNewItemMethod() {
+      const todoValue = this.todoItem && this.todoItem.trim();
+      if (!todoValue) {
+        return;
+      }
       const todoItem = {
         title: this.todoItem,
         isDone: false,

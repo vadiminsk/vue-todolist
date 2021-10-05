@@ -23,7 +23,7 @@ export default createStore({
       state.todoItem = "";
     },
 
-    DELETE_ITEM(state, todoItem, id) {
+    DELETE_ITEM(state, id) {
       let index = state.todos.findIndex((todo) => (todo.id = id));
       state.todos.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(state.todos));
