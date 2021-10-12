@@ -3,8 +3,6 @@
     <todo-list-form @create="createTodo" />
     <todo-list :todos="todos" />
   </div>
-  <button @click="throwError">Throw error</button>
-  myUndefinedFunction();
 </template>
 
 <script>
@@ -24,11 +22,6 @@ export default {
   methods: {
     createTodo(todo) {
       this.todos.push(todo);
-    },
-    myUndefinedFunction();
-
-    throwError() {
-      throw new Error("Sentry Error");
     },
   },
 };

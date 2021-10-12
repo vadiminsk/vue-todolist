@@ -15,6 +15,7 @@ Sentry.init({
     "https://0cd5f6a513e340d7969b170a1d407fee@o408625.ingest.sentry.io/6003131",
   maxBreadcrumbs: 50,
   debug: true,
+  logErrors: true,
   integrations: [
     new Integrations.BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
