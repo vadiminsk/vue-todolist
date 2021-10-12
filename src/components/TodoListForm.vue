@@ -17,7 +17,7 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="title-field" class="sr-only">Title</label>
-            <input
+            <app-input
               id="title-field"
               name="title"
               type="text"
@@ -28,7 +28,7 @@
           </div>
           <div>
             <label for="description-field" class="sr-only">Description</label>
-            <input
+            <app-input
               id="description-field"
               name="description"
               type="text"
@@ -40,13 +40,7 @@
         </div>
 
         <div class="flex flex-col">
-          <button
-            type="submit"
-            class="self-end py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click="createTodo"
-          >
-            Add item
-          </button>
+          <app-button @click="createTodo">Add item</app-button>
         </div>
       </form>
     </div>

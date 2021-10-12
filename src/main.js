@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import components from "@/components/UI";
 import "./assets/main.css";
 import "./assets/tailwind.css";
 import router from "./router";
@@ -8,6 +9,10 @@ import * as Sentry from "@sentry/vue";
 import { Integrations } from "@sentry/tracing";
 
 const app = createApp(App);
+
+components.forEach((component) => {
+  app.component(component.name, component);
+});
 
 Sentry.init({
   app,

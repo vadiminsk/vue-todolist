@@ -1,13 +1,17 @@
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-        Todo List
-      </h3>
-    </div>
+  <div
+    v-if="todos.length > 0"
+    class="bg-white shadow overflow-hidden sm:rounded-lg"
+  >
     <div v-for="todo in todos" :key="todo.id">
-      <todo-list-item :todo="todo" />
+      <todo-list-item :todo="todo" @remove="removeTodo" />
     </div>
+  </div>
+  <div
+    v-else
+    class="bg-white shadow overflow-hidden sm:rounded-lg px-4 py-5 text-lg leading-6 font-medium text-gray-900"
+  >
+    Todo list is empty
   </div>
 </template>
 
@@ -19,6 +23,12 @@ export default {
     todos: {
       type: Array,
       required: true,
+    },
+  },
+
+  methods: {
+    removeTodo(todo) {
+      this.$emit("remove", todo);
     },
   },
 };
