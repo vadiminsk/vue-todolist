@@ -1,12 +1,12 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import components from "@/components/UI";
-import "./assets/main.css";
 import "./assets/tailwind.css";
+import "./assets/main.css";
 import router from "./router";
 import store from "./store";
 import * as Sentry from "@sentry/vue";
 import { Integrations } from "@sentry/tracing";
+import components from "@/components/UI";
 
 const app = createApp(App);
 
