@@ -8,7 +8,7 @@
         {{ post.description }}
       </div>
     </div>
-    <app-button>Remove</app-button>
+    <app-button @click="remove">Remove</app-button>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
     post: {
       type: Object,
       reguired: true,
+    },
+  },
+  methods: {
+    remove(post) {
+      this.$emit("remove", post);
     },
   },
 };
